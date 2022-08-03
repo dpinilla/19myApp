@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <h3>Bienvenido <strong>{{nombre}}</strong></h3>
+   <ion-card (click)="elegido(i)" *ngFor="let myDatos of datos; let i = index">
+      <ion-card-content>
+        <ion-icon *ngIf="!mostrarElegido[i]; else noMostrar;" size="large" name="caret-down-circle-outline"></ion-icon>
+        <ng-template #noMostrar>
+          <ion-icon size="large" name="caret-up-circle-outline"></ion-icon>
+        </ng-template>
+        {{myDatos.nombre}} {{myDatos.apellido}}
+        <div *ngIf="mostrarElegido[i]">
+          <p>Edad: {{myDatos.edad}}</p>
+          <img src="{{myDatos.imagen}}"/>
+        </div>
+      </ion-card-content>
+   </ion-card>
+</ion-content>
